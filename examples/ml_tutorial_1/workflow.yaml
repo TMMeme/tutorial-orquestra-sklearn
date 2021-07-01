@@ -9,7 +9,7 @@ imports:
 - name: sklearn-component
   type: git
   parameters:
-    repository: "git@github.com:zapatacomputing/tutorial-orquestra-sklearn.git"
+    repository: "git@github.com:TMMeme/tutorial-orquestra-sklearn.git"
     branch: "master"
 
 steps:
