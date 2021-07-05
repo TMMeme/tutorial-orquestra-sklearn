@@ -1,0 +1,37 @@
+#Workflow API version
+apiVersion: io.orquestra.workflow/1.0.0
+
+#prefix for workflow ID
+name: ml-2-workflow
+
+#List components neede by workflow.
+imports:
+- name: sklearn-component
+  type: git
+  parameters:
+    repository: "git@github.com:TMMeme/tutorial-orquestra-sklearn.git"
+    branch: "master"
+
+steps:
+
+#This step runs the step that trains the model
+- name: perceptron-training
+  config:
+    runtime:
+      language: python3
+      imports: [sklearn-component]
+      parameters:
+        file: sklearn-component/steps/ml_tutorial_2_step.py
+        function: generate_train_step
+  inputs:
+    - dataset_name: "simple_dataset"
+      type: string
+    - model_name: "perceptron"
+      type: string
+  outputs:
+  - name: result
+    type: output
+
+types:
+ - output
+    
